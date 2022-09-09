@@ -1,0 +1,18 @@
+﻿@using N6.Bsjc.ReportDesigner.Reports
+@{
+    ViewData["Title"] = Model.Title;
+    var reportDesigner = Html.DevExpress()
+    .ReportDesigner("reportDesigner")
+    .Height("1000px")
+    .QueryBuilderHandlerUri("/DXXQBMVC")
+    .ReportDesignerHandlerUri("/DXXRDMVC")
+    .ReportPreviewHandlerUri("/DXXRDVMVC")
+    .Bind(Model.Id);
+    @:@reportDesigner.RenderHtml()
+}
+@section Scripts {
+    <link href="~/css/dx-reporting-skeleton-screen.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/designer.part.bundle.css" />
+    <script src="~/js/designer.part.bundle.js"></script>
+    @reportDesigner.RenderScripts()
+}

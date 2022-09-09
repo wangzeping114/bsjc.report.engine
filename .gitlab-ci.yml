@@ -1,0 +1,105 @@
+# ±äÁ¿
+variables:
+  API_IMAGE_NAME_REPORT_DOCUMENTVIEWER: n6bsjc/report_documentviewer_mvc
+  API_IMAGE_NAME_REPORT_DESIGNER: n6bsjc/report_designer_mvc
+
+# ½×¶Î
+stages:
+  - init
+  - build
+  - deploy
+  - push
+
+before_script:
+  - echo $CI_COMMIT_REF_NAME 
+  - echo $CI_COMMIT_BRANCH
+
+init_var_dev:
+  stage: init
+  script:
+    - echo "IMAGE_TAG=dev" >> build.env
+    - echo "DEPLOY_TO_ENV=dev" >> build.env
+    - echo "PIPELINE_TOKEN=$TRIGGER_PIPELINE_TOKEN_DEV" >> build.env
+  artifacts:
+    reports:
+      dotenv: build.env  
+  only:
+    - dev
+  tags:
+    - n6bsjc
+
+init_var_staging:
+  stage: init
+  script:
+    - echo "IMAGE_TAG=latest" >> build.env
+    - echo "DEPLOY_TO_ENV=staging" >> build.env
+    - echo "PIPELINE_TOKEN=$TRIGGER_PIPELINE_TOKEN_STAGING" >> build.env
+  artifacts:
+    reports:
+      dotenv: build.env  
+  only:
+    - master
+  tags:
+    - n6bsjc
+
+build-docker:
+  stage: build
+  script:
+    - echo $API_IMAGE_NAME_REPORT_DOCUMENTVIEWER:$IMAGE_TAG
+    - echo $API_IMAGE_NAME_REPORT_DESIGNER:$IMAGE_TAG
+    - echo $DEPLOY_TO_ENV
+    - docker build -t $API_IMAGE_NAME_REPORT_DOCUMENTVIEWER:$IMAGE_TAG -f ./N6.Bsjc.ReportDocumentViewer/Dockerfile .
+    - docker build -t $API_IMAGE_NAME_REPORT_DESIGNER:$IMAGE_TAG -f ./N6.Bsjc.ReportDesigner/Dockerfile .
+  only:
+    - dev
+    - master
+  tags:
+    - n6bsjc
+  dependencies:
+    - init_var_dev
+    - init_var_staging
+
+
+deploy:
+  variables:
+    GIT_STRATEGY: none
+  stage: deploy
+  only:
+    - dev
+    - master
+  tags:
+    - n6bsjc
+  script:
+    - echo $DEPLOY_TO_ENV
+    - echo $PIPELINE_TOKEN
+    - echo $PIPELINE_URL
+    - curl -X POST -F token=$PIPELINE_TOKEN -F variables[DEPLOY_TO_ENV]=$DEPLOY_TO_ENV -F ref=master $PIPELINE_URL
+  dependencies:
+    - init_var_dev
+    - init_var_staging
+    - build-docker
+
+push:
+  variables:
+    GIT_STRATEGY: none
+    PUSH_API_IMAGE_NAME_REPORT_DOCUMENTVIEWER: $CI_DOCKER/$API_IMAGE_NAME_REPORT_DOCUMENTVIEWER:$IMAGE_TAG
+    PUSH_API_IMAGE_NAME_REPORT_DESIGNER: $CI_DOCKER/$API_IMAGE_NAME_REPORT_DESIGNER:$IMAGE_TAG
+  stage: push
+  before_script:
+    - docker login -u $CI_DOCKER_USER -p $CI_DOCKER_PASSWORD $CI_DOCKER
+  tags:
+    - n6bsjc
+  only:
+    - master
+  script:
+    - docker tag $API_IMAGE_NAME_REPORT_DOCUMENTVIEWER:$IMAGE_TAG $PUSH_API_IMAGE_NAME_REPORT_DOCUMENTVIEWER
+    - docker tag $API_IMAGE_NAME_REPORT_DESIGNER:$IMAGE_TAG $PUSH_API_IMAGE_NAME_REPORT_DESIGNER
+
+    - docker push $PUSH_API_IMAGE_NAME_REPORT_DOCUMENTVIEWER
+    - docker push $PUSH_API_IMAGE_NAME_REPORT_DESIGNER
+ 
+
+  dependencies:
+    - init_var_dev
+    - init_var_staging
+    - deploy

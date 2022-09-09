@@ -1,0 +1,104 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32802.440
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N6.Bsjc.ReportDesigner", "N6.Bsjc.ReportDesigner\N6.Bsjc.ReportDesigner.csproj", "{B1E15F0C-B10A-4D8C-B8BC-B619ED71C893}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N6.Bsjc.ReportDocumentViewer", "N6.Bsjc.ReportDocumentViewer\N6.Bsjc.ReportDocumentViewer.csproj", "{72E7992C-0CD8-4AEA-96EC-E0015369DDD9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N6.Bsjc.Reporting.Domain", "N6.Bsjc.Reporting.Domain\N6.Bsjc.Reporting.Domain.csproj", "{5E81F2FD-0CCB-442A-8413-2949AA04943A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N6.Bsjc.Reporting.HttpApi.Client.Contracts", "N6.Bsjc.Reporting.HttpApi.Client.Contracts\N6.Bsjc.Reporting.HttpApi.Client.Contracts.csproj", "{1653C8ED-39F2-4E8A-B0CA-F96B13746C59}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N6.Bsjc.Reporting.HttpApi.Client", "N6.Bsjc.Reporting.HttpClient\N6.Bsjc.Reporting.HttpApi.Client.csproj", "{3EFBAC71-CED4-4763-9B05-AD0F98D9125E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N6.Core.Abp.Client.HttpApi", "N6.Core.Abp.Client.HttpApi\N6.Core.Abp.Client.HttpApi.csproj", "{605B949E-AA54-44D1-B573-93811E888A68}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N6.Core.Abp.Client.Contracts", "N6.Core.Abp.Client.Contracts\N6.Core.Abp.Client.Contracts.csproj", "{E281CBB9-62BE-4D48-94EE-DBE44334B19C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "其他文件", "其他文件", "{9BF6282D-58D1-4F72-99ED-70C0EA84E056}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		docker-compose.dev.yml = docker-compose.dev.yml
+		README.md = README.md
+		version.props = version.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FA16DE37-1AB0-46CF-B43C-D730D1DA213D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{67F16FF9-7872-413C-B8A1-2B9591F4261A}"
+	ProjectSection(SolutionItems) = preProject
+		.gitlab-ci.yml = .gitlab-ci.yml
+		dockerfile.migrator = dockerfile.migrator
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{10579017-78FB-441C-889A-908E4AD11EE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N6.Bsjc.Reporting.Domain.Test", "N6.Reporting.Domain.Test\N6.Bsjc.Reporting.Domain.Test.csproj", "{8CDBFD92-6C5F-4744-B625-E948752DF1AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N6.Bsjc.Reporting.Domain.Shared", "N6.Bsjc.Reporting.Domain.Shared\N6.Bsjc.Reporting.Domain.Shared.csproj", "{6EFBAB32-AB08-44E0-B823-F5D80DED666D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1E15F0C-B10A-4D8C-B8BC-B619ED71C893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1E15F0C-B10A-4D8C-B8BC-B619ED71C893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1E15F0C-B10A-4D8C-B8BC-B619ED71C893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1E15F0C-B10A-4D8C-B8BC-B619ED71C893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E7992C-0CD8-4AEA-96EC-E0015369DDD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E7992C-0CD8-4AEA-96EC-E0015369DDD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E7992C-0CD8-4AEA-96EC-E0015369DDD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E7992C-0CD8-4AEA-96EC-E0015369DDD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E81F2FD-0CCB-442A-8413-2949AA04943A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E81F2FD-0CCB-442A-8413-2949AA04943A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E81F2FD-0CCB-442A-8413-2949AA04943A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E81F2FD-0CCB-442A-8413-2949AA04943A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1653C8ED-39F2-4E8A-B0CA-F96B13746C59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1653C8ED-39F2-4E8A-B0CA-F96B13746C59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1653C8ED-39F2-4E8A-B0CA-F96B13746C59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1653C8ED-39F2-4E8A-B0CA-F96B13746C59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EFBAC71-CED4-4763-9B05-AD0F98D9125E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EFBAC71-CED4-4763-9B05-AD0F98D9125E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EFBAC71-CED4-4763-9B05-AD0F98D9125E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EFBAC71-CED4-4763-9B05-AD0F98D9125E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{605B949E-AA54-44D1-B573-93811E888A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{605B949E-AA54-44D1-B573-93811E888A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{605B949E-AA54-44D1-B573-93811E888A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{605B949E-AA54-44D1-B573-93811E888A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E281CBB9-62BE-4D48-94EE-DBE44334B19C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E281CBB9-62BE-4D48-94EE-DBE44334B19C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E281CBB9-62BE-4D48-94EE-DBE44334B19C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E281CBB9-62BE-4D48-94EE-DBE44334B19C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CDBFD92-6C5F-4744-B625-E948752DF1AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CDBFD92-6C5F-4744-B625-E948752DF1AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CDBFD92-6C5F-4744-B625-E948752DF1AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CDBFD92-6C5F-4744-B625-E948752DF1AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EFBAB32-AB08-44E0-B823-F5D80DED666D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EFBAB32-AB08-44E0-B823-F5D80DED666D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EFBAB32-AB08-44E0-B823-F5D80DED666D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EFBAB32-AB08-44E0-B823-F5D80DED666D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B1E15F0C-B10A-4D8C-B8BC-B619ED71C893} = {FA16DE37-1AB0-46CF-B43C-D730D1DA213D}
+		{72E7992C-0CD8-4AEA-96EC-E0015369DDD9} = {FA16DE37-1AB0-46CF-B43C-D730D1DA213D}
+		{5E81F2FD-0CCB-442A-8413-2949AA04943A} = {FA16DE37-1AB0-46CF-B43C-D730D1DA213D}
+		{1653C8ED-39F2-4E8A-B0CA-F96B13746C59} = {FA16DE37-1AB0-46CF-B43C-D730D1DA213D}
+		{3EFBAC71-CED4-4763-9B05-AD0F98D9125E} = {FA16DE37-1AB0-46CF-B43C-D730D1DA213D}
+		{605B949E-AA54-44D1-B573-93811E888A68} = {FA16DE37-1AB0-46CF-B43C-D730D1DA213D}
+		{E281CBB9-62BE-4D48-94EE-DBE44334B19C} = {FA16DE37-1AB0-46CF-B43C-D730D1DA213D}
+		{8CDBFD92-6C5F-4744-B625-E948752DF1AE} = {10579017-78FB-441C-889A-908E4AD11EE9}
+		{6EFBAB32-AB08-44E0-B823-F5D80DED666D} = {FA16DE37-1AB0-46CF-B43C-D730D1DA213D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4667E48B-373F-400C-B2FB-E630C720D3F1}
+	EndGlobalSection
+EndGlobal

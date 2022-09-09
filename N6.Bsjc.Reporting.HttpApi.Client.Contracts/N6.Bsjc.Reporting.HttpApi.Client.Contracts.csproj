@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Refit" Version="6.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\N6.Bsjc.Reporting.Domain.Shared\N6.Bsjc.Reporting.Domain.Shared.csproj" />
+    <ProjectReference Include="..\N6.Core.Abp.Client.Contracts\N6.Core.Abp.Client.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

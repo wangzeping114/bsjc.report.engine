@@ -1,2 +1,171 @@
-# bsjc.report.engine
-è¿™æ˜¯ä¸€ä¸ªæŠ¥å‘Šå¼•æ“é¡¹ç›®
+### ÏîÄ¿·Ö²ã
+
+```
+- N6.Bsjc.ReportDesigner  ±¨±íÉè¼ÆÆ÷Õ¾µã
+- N6.Bsjc.ReportDocumentViewer ±¨±í²é¿´Æ÷Õ¾µã
+- N6.Bsjc.Reporting.Domain ±¨±íÁìÓò²ã(Ìá¹©±¨±í²é¿´Æ÷ºÍ±¨±íÉè¼ÆÆ÷µÄÖ§³Ö)
+- N6.Bsjc.Reporting.Domain.Shared ±¨±íÁìÓò¹²Ïí²ã(¶¨ÒåÍ¨ÓÃµÄDTOºÍÃ¶¾Ù)  
+- N6.Bsjc.Reporting.Domain.Test ÁìÓò²ãµ¥Ôª²âÊÔ
+- N6.Bsjc.Reporting.HttpApi.Client ±¨±íÊı¾İ·ÃÎÊ²ã(Ô¶³Ì½Ó¿Úµ÷ÓÃ)
+- N6.Bsjc.Reporting.HttpApi.Client.Contracts  ±¨±íÊı¾İ·ÃÎÊ²ãÆõÔ¼(¶¨Òå³éÏóÀàºÍ½Ó¿Ú,DTO,Ã¶¾Ù)
+- N6.Core.Abp.Client.Contracts ¿ò¼Ü²ãÆõÔ¼µÄÊı¾İ·ÃÎÊ²ã(Ìá¹©Í¨ÓÃµÄÔ¶³Ì·ÃÎÊ·½Ê½,Ä¿Ç°²ÉÓÃµÄRefit)
+- N6.Core.Abp.Client.HttpApi ¿ò¼Ü²ãÆõÔ¼µÄÊµÏÖ²ã (Ìá¹©Í¨ÓÃµÄÔ¶³Ì·ÃÎÊ·½Ê½,Ä¿Ç°²ÉÓÃµÄRefit)
+```
+### ¿ª·¢»·¾³
+
+- [±ØĞë] .NET 5 
+- [±ØĞë] Visual Studio 2019 / VS Code
+- [±ØĞë] DevExpressComponentsBundleSetup-21.1.6
+- [¿ÉÑ¡] RabbitMq
+
+
+### ÈçºÎ¿ªÊ¼
+#### ¼ì²é»·¾³
+
+- ÒÑ°²×°»òÅäÖÃ `RabbitMq` 
+- ÒÑ°²×° ` .NET 5 SDK`
+
+#### ĞŞ¸ÄÔ¶³Ì·şÎñÅäÖÃ
+
+1. ´ò¿ªÏîÄ¿ `N6.Bsjc.ReportDesigner` ÖĞµÄÅäÖÃÎÄ¼ş£º`appsettings.json`£¬ĞŞ¸Ä `RemoteServices` ÖĞµÄ `ReportService`ÏÂµÄ`BaseUrl` ÅäÖÃÎªÊµ¼ÊµÄÔ¶³ÌÁ¬½Ó¡£
+2. ´ò¿ªÏîÄ¿ `N6.Bsjc.ReportDocumentViewer` ÖĞµÄÅäÖÃÎÄ¼ş£º`appsettings.json`£¬ĞŞ¸Ä `RemoteServices` ÖĞµÄ `ReportService`ÏÂµÄ`BaseUrl` ÅäÖÃÎªÊµ¼ÊµÄÔ¶³ÌÁ¬½Ó¡£
+
+#### ÔËĞĞµ÷ÊÔÏîÄ¿
+
+1. Èç¹ûÔÚ±¾µØ°²×°ÁË `RabbitMq`£¬`appsettings.json` ÅäÖÃÎÄ¼ş¿ÉÒÔ²»ĞŞ¸Ä
+2. Èç¹û±¾µØ»·¾³Ã»ÓĞ°²×°ÏàÓ¦·şÎñ£¬ĞŞ¸Ä `appsettings.json` ÅäÖÃÎÄ¼ş£¬µ÷ÕûÏàÓ¦ÅäÖÃ½Ú
+   - Ê¾Àı
+   
+```JSON
+{
+  "RabbitMQ": {
+    "Connections": {
+      "Default": {
+        "HostName": "10.10.10.23",
+        "Port": "5672",
+        "UserName": "admin",
+        "Password": "123456"
+      }
+    },
+    "EventBus": {
+      "ClientName": "BJJS",
+      "ExchangeName": "BJJS.Exchange"
+    }
+  },
+  "Redis": {
+    "IsEnabled": "true",
+    "Configuration": "10.10.10.23"
+  }
+}
+```
+3. Èç¹ûÊ¹ÓÃ Docker ´´½¨¿ª·¢»·¾³ `docker-compose -f docker-compose.dev.yml up -d`£¬ÔòÊ¹ÓÃÒÔÏÂ¿ª·¢ÅäÖÃ `appsettings.Development.json`
+```
+{
+    "ConnectionStrings": {
+        "Default": "Data Source=127.0.0.1;Initial Catalog=N6BSJC;UID=sa;PWD=Y9X5l6UkFOt817p1",
+        "Hangfire": "127.0.0.1"
+    },
+    "RabbitMQ": {
+        "Connections": {
+            "Default": {
+                "HostName": "127.0.0.1",
+                "Port": "5672",
+                "UserName": "bsjc",
+                "Password": "bsjc"
+            }
+        },
+        "EventBus": {
+            "ClientName": "BJJS",
+            "ExchangeName": "BJJS.Exchange"
+        }
+    },
+    "Redis": {
+        "IsEnabled": "true",
+        "Configuration": "127.0.0.1"
+    },
+    "Blob": {
+        "Mode": "Minio",
+        "Path": "Files", //Ê¹ÓÃ±¾µØÂ·¾¶±£´æÊ±
+        "Minio": {
+            "EndPoint": "127.0.0.1:9022", //²»ÒªÊ¹ÓÃ http ¿ªÍ·£¬¶Ë¿Ú²»ÒªÊ¹ÓÃ¿ØÖÆÌ¨¹ÜÀí¶Ë¿Ú
+            "AccessKey": "minioadmin",
+            "SecretKey": "minioadmin",
+            "BucketName": "bsjc", //Ğ¡Ğ´
+            "Url": "http://127.0.0.1:9022/bsjc/host/"
+        }
+    }
+}
+```
+
+### ¿ª·¢¹æ·¶
+
+- ±àÂë¹æ·¶
+  - ÏîÄ¿´úÂë·ç¸ñÍ³Ò»Ê¹ÓÃ .editorconfig ÅäÖÃÎÄ¼ş½øĞĞÔ¼¶¨
+
+### Ô´´úÂë¹ÜÀí¹æ·¶
+
+#### ¹æÔòÒªÇó
+
+- ¸ù¾İ¹¦ÄÜºÍÎÊÌâ´´½¨µ¥¶ÀµÄ·ÖÖ§½øĞĞ¿ª·¢ºÍĞŞ¸´
+    - Çë²»Òª°Ñ¶à¸ö¹¦ÄÜºÍÎÊÌâ»ìÔÚÒ»¸ö·ÖÖ§ÉÏ¿ª·¢Ìá½»
+- ¾¡¿ÉÄÜ°´×îĞ¡¹¦ÄÜµã½øĞĞ´úÂëÌá½»
+- Ìá½»Ç°½øĞĞ¼ì²é
+    - ¼ì²éÌá½»µÄÎÄ¼şÊÇ·ñºÍ±¾´Î¿ª·¢µÄ¹¦ÄÜµãÏà¹Ø
+    - Ìá½»Ê±È¥µô²»Ïà¹ØµÄÎÄ¼ş
+- ÒÑ¿ª·¢Íê³ÉµÄ·ÖÖ§¼°Ê±Ìá½»ÍÆËÍºÍ·¢ÆğºÏ²¢ÇëÇó
+  - ²»¼°Ê±Ìá½»ÈİÒ×Ôì³É³åÍ»
+
+#### ·ÖÖ§²ßÂÔ
+
+- matser	Ä¿Ç°master·ÖÖ§¾ÍÊÇÄ¬ÈÏµÄ¿ª·¢·ÖÖ§
+   
+#### Á÷³Ì
+
+**Ò»°ã¹¦ÄÜ¿ª·¢ºÍÎÊÌâĞŞ¸´**
+
+1. »ùÓÚ master ·ÖÖ§´´½¨Ò»¸ö feature »ò bugfix ·ÖÖ§
+1. ¿ª·¢Íê³Éºó£¬ÉêÇëºÏ²¢µ½ master ·ÖÖ§
+
+**ÏßÉÏÎÊÌâĞŞ¸´**
+
+1. ÔÚÏàÓ¦°æ±¾ master ·ÖÖ§ÏÂ£¨Í¨¹ı°æ±¾±êÇ©£©£¬´´½¨ hotfix ·ÖÖ§
+1. ¿ª·¢²âÊÔÍê³Éºó£¬ºÏ²¢ master ·ÖÖ§
+
+**°æ±¾·¢²¼**
+
+
+#### ·ÖÖ§ÃüÃûÒªÇó
+
+- ·ÖÖ§ÃüÃû¹æÔò£º·ÖÖ§Ç°×º-ìøµÀ±àºÅ
+    - feature-123¡¢bugfix-123¡¢hotfix-123
+- Èç¹ûÃ»ÓĞìøµÀ±àºÅ£ºìøµÀ±àºÅÊ¹ÓÃÈÎÎñµÄ¼òÒªËµÃ÷·½×Ö´úÌæ
+
+#### Ìá½»ÏûÏ¢¸ñÊ½
+
+```ÀàĞÍ#ID Ìá½»ËµÃ÷```
+* ÀàĞÍ
+  * task
+  * bug
+* ID
+  * ìøµÀÈÎÎñID
+  * ìøµÀBugID
+* Ìá½»ËµÃ÷
+  * ³¤¶È²»Òª³¬¹ı50¸öÎÄ×Ö
+  * ³¬³¤µÄÎÄ×Ö»»ĞĞÊäÈë
+* Ê¾Àı£º
+  * ```task#1234 Ôö¼ÓµÇÂ¼¹¦ÄÜ```
+  * ```bug#567 ĞŞ¸´ÎŞ·¨´òÓ¡µÄÎÊÌâ```
+
+#### ÈçºÎ·¢ÆğºÏ²¢ÇëÇó
+1. ÔÚ GitLab ÍøÒ³ÉÏÎªÍÆËÍµÄ·ÖÖ§´´½¨Ò»¸öºÏ²¢ÇëÇó£¬²¢Ñ¡ÔñÆÀÉóÈËÔ±£¨http://192.168.2.20/n6/backend/n6.bsjc/-/merge_requests£©
+    1. Ô´·ÖÖ§Ñ¡Ôñµ±Ç°ÍÆËÍµÄ·ÖÖ§
+    2. Ä¿±ê·ÖÖ§Ñ¡Ôñ dev ·ÖÖ§
+    3. Ñ¡ÔñÉóºËÈËÔ±
+    4. Ìá½»¸øÆÀÉóÈËÔ±ÆÀÉó
+2. Èç¹ûÆÀÉó±»¾Ü¾ø£¬ĞŞ¸Ä´úÂëºóÖØĞÂÍÆËÍ£¬²¢ÖØĞÂ·¢ÆğºÏ²¢ÇëÇó
+3. ÆÀÉóÍ¨¹ıºó£¬É¾³ı´Ë´Î¿ª·¢µÄ·ÖÖ§£¬Í¬Ê±À­È¡×îĞÂµÄ dev ·ÖÖ§´úÂë£¨Ô¶³Ì²Ö¿âÏàÓ¦·ÖÖ§ÔÚºÏ²¢ºó»á×Ô¶¯É¾³ı£©
+
+### ²Î¿¼×ÊÁÏ
+
+- [¹Ù·½ÎÄµµ](https://docs.abp.io/zh-Hans/abp/latest)
+
