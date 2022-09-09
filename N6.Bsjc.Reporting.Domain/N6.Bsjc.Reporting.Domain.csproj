@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ApplicationReportStorageWebExtension.cs~RFa84edc5.TMP" />
+    <None Remove="DataSource\JsonDataSourceProvider.cs~RF6b8efd0.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.AspNetCore.Reporting" Version="21.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Volo.Abp.Core" Version="5.3.3" />
+    <PackageReference Include="Volo.Abp.EventBus" Version="5.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\N6.Bsjc.Reporting.Domain.Shared\N6.Bsjc.Reporting.Domain.Shared.csproj" />
+    <ProjectReference Include="..\N6.Bsjc.Reporting.HttpApi.Client.Contracts\N6.Bsjc.Reporting.HttpApi.Client.Contracts.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Reference Include="DevExpress.DataAccess.v21.1">
+      <HintPath>F:\Program Files (x86)\DevExpress 21.1\Components\Offline Packages\devexpress.dataaccess\21.1.6\lib\netstandard2.0\DevExpress.DataAccess.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v21.1">
+      <HintPath>F:\Program Files (x86)\DevExpress 21.1\Components\Offline Packages\devexpress.reporting.core\21.1.6\lib\netstandard2.0\DevExpress.XtraReports.v21.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v21.1.Web">
+      <HintPath>F:\Program Files (x86)\DevExpress 21.1\Components\Offline Packages\devexpress.web.reporting.common\21.1.6\lib\netstandard2.0\DevExpress.XtraReports.v21.1.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="PredefinedReports\" />
+  </ItemGroup>
+
+</Project>

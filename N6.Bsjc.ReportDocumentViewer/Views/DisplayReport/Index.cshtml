@@ -1,0 +1,16 @@
+@using N6.Bsjc.ReportDocumentViewer.Reports;
+@model N6.Bsjc.Reporting.Domain.ReportingControlModel;
+<link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+<script src="~/js/viewer.part.bundle.js"></script>
+@{
+    ViewData["Title"] = Model.Title;
+    var viewerRender = Html.DevExpress().WebDocumentViewer("DocumentViewer")
+    .Height("900px")
+    .HandlerUri("/DXXRDVMVC")
+    .Bind(Model.Id);
+    @:@viewerRender.RenderHtml()
+}
+
+@section Scripts {
+    @viewerRender.RenderScripts()
+}

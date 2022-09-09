@@ -1,0 +1,10 @@
+﻿@model N6.Bsjc.Reporting.Domain.ReportingControlModel;
+<form method="post">
+<button type="submit"
+    asp-controller="DesignerReport"
+    asp-route-id=@Model.Id
+    asp-route-title=@Model.Title
+    class="btn btn-primary btn-xs">
+    显示
+</button>
+</form>

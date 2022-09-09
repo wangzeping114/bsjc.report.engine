@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DevExpress.Printing.v21.1.Core">
+      <HintPath>F:\Program Files (x86)\DevExpress 21.1\Components\Offline Packages\devexpress.printing.core\21.1.6\lib\netstandard2.0\DevExpress.Printing.v21.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v21.1">
+      <HintPath>F:\Program Files (x86)\DevExpress 21.1\Components\Offline Packages\devexpress.reporting.core\21.1.6\lib\netstandard2.0\DevExpress.XtraReports.v21.1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

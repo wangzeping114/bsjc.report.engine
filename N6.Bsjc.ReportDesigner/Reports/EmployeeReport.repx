@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="21.1.6.0" Ref="0" ControlType="N6.Bsjc.ReportDesigner.Reports.TestReport, N6.Bsjc.ReportDesigner, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Name="TestReport" DisplayName="EmployeeReport" PageWidth="850" PageHeight="1100" Version="21.1" Font="Arial, 9.75pt">
+  <Extensions>
+    <Item1 Ref="1" Key="DataSerializationExtension" Value="DevExpress.XtraReports.Web.ReportDesigner.DefaultDataSerializer" />
+  </Extensions>
+  <Bands>
+    <Item1 Ref="2" ControlType="TopMarginBand" Name="TopMargin" />
+    <Item2 Ref="3" ControlType="DetailBand" Name="Detail" HeightF="200">
+      <Controls>
+        <Item1 Ref="4" ControlType="XRLabel" Name="label3" Multiline="true" Text="ffdd" SizeF="100,23" LocationFloat="305.208,32.249" Padding="2,2,0,0,100" />
+        <Item2 Ref="5" ControlType="XRLabel" Name="label2" Multiline="true" Text="世界" SizeF="100,23" LocationFloat="157.29167,32.249992" Padding="2,2,0,0,100" />
+        <Item3 Ref="6" ControlType="XRLabel" Name="label1" Multiline="true" Text="你好" SizeF="100,23" LocationFloat="44.791668,32.249992" Padding="2,2,0,0,100" />
+      </Controls>
+    </Item2>
+    <Item3 Ref="7" ControlType="BottomMarginBand" Name="BottomMargin" />
+  </Bands>
+</XtraReportsLayoutSerializer>
