@@ -13,34 +13,19 @@ pool:
   vmImage: windows-latest
 
 jobs:
-- job: Work
+- job: installnotnetcorecli
   steps:
-  - script: echo Hello, world!
-    displayName: 'Run a one-line script'
+   - task: DotNetCoreCLI@2
+     inputs:
+       command: 'build'
 
-  # This malformed command causes the job to fail
-  # Only run this command if the succeed variable is set to false
-  - script: git clone malformed input
-    condition: eq(${{ parameters.succeed }}, false)- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'- task: UseDotNet@2
-  displayName: 'Install .NET Core SDK'
-  inputs:
-    version: 5.0.x
-    performMultiLevelLookup: true
-    includePreviewVersions: true # Required for preview versions
-
-# This job creates a work item, and only runs if the previous job failed
-- job: ErrorHandler
-  dependsOn: Work
-  condition: failed()
-  steps: 
-  - bash: |
-      az boards work-item create \
-        --title "Build $(build.buildNumber) failed" \
-        --type bug \
-        --org $(System.TeamFoundationCollectionUri) \
-        --project $(System.TeamProject)
-    env: 
-      AZURE_DEVOPS_EXT_PAT: $(System.AccessToken)
-    displayName: 'Create work item on failure'
+- job: installnpm
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '16.x'
+      checkLatest: true
+  - task: Npm@1
+    inputs:
+      command: 'install'
+ 
